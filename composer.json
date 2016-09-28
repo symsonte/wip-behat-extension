@@ -1,0 +1,39 @@
+{
+    "name": "symsonte/wip-behat-extension",
+    "type": "behat-extension",
+    "description": "Symsonte framework extension for Behat",
+    "keywords": ["symsonte", "framework", "bdd"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yosmany Garcia",
+            "email": "yosmanyga@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "behat/behat": "~3",
+        "symsonte/wip-service-kit": "@dev",
+        "symsonte/wip-php-file-resource": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symsonte\\Behat\\": [
+                "src"
+            ]
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://satis"
+        }
+    ],
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}
