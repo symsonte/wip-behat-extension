@@ -1,0 +1,27 @@
+{
+    "name": "symsonte/behat-extension",
+    "type": "behat-extension",
+    "description": "Symsonte framework extension for Behat",
+    "keywords": ["symsonte", "framework", "bdd"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yosmany Garcia",
+            "email": "yosmanyga@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev": {
+        "behat/behat": "~3.0",
+        "symsonte/symsonte": "@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Symsonte\\Behat\\": [
+                "src"
+            ]
+        }
+    }
+}
