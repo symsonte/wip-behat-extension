@@ -2,11 +2,11 @@
 
 namespace Symsonte\Behat\ServiceContainer;
 
+use Behat\Behat\Context\ServiceContainer\ContextExtension;
 use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
 use Behat\Testwork\ServiceContainer\ExtensionManager;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Behat\Behat\Context\ServiceContainer\ContextExtension;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
@@ -43,11 +43,10 @@ class SymsonteExtension implements ExtensionInterface
             ->end()
             ->arrayNode('namespaces')
             ->prototype('scalar')->end()
-            ->defaultValue(array())
+            ->defaultValue([])
             ->end()
             ->end();
     }
-
 
     /**
      * {@inheritdoc}
@@ -74,9 +73,9 @@ class SymsonteExtension implements ExtensionInterface
         $definition = new Definition(
             'Symsonte\ServiceKit\Container',
             [
-                sprintf("%s/%s", $container->getParameter('paths.base'), $config['parametersFile']),
-                sprintf("%s/%s", $container->getParameter('paths.base'), $config['cacheDir']),
-                $config['namespaces']
+                sprintf('%s/%s', $container->getParameter('paths.base'), $config['parametersFile']),
+                sprintf('%s/%s', $container->getParameter('paths.base'), $config['cacheDir']),
+                $config['namespaces'],
             ]
         );
         $container->setDefinition('symsonte.container', $definition);
@@ -87,10 +86,10 @@ class SymsonteExtension implements ExtensionInterface
      */
     private function loadContextInitializer(ContainerBuilder $container)
     {
-        $definition = new Definition('Symsonte\Behat\Context\ContainerAwareInitializer', array(
+        $definition = new Definition('Symsonte\Behat\Context\ContainerAwareInitializer', [
             new Reference('symsonte.container'),
-        ));
-        $definition->addTag(ContextExtension::INITIALIZER_TAG, array('priority' => 0));
+        ]);
+        $definition->addTag(ContextExtension::INITIALIZER_TAG, ['priority' => 0]);
         $container->setDefinition('symsonte.behat.context.container_aware_initializer', $definition);
     }
 }
