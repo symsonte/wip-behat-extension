@@ -1,0 +1,21 @@
+services:
+  php:
+    image: yosmanyga/php-cli
+    container_name: symsonte_wip_behat_extension_php
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ../../:/var/www/
+    networks:
+      - development
+    environment:
+      PHP_IDE_CONFIG: "serverName=docker"
+      PATH: $PATH:/var/www/vendor/bin
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    working_dir: /var/www
+    user: "${UID}:${GID}"
+    command: tail -f /dev/null
+
+networks:
+  development:
+    external: true
