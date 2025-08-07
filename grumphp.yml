@@ -1,0 +1,9 @@
+grumphp:
+  tasks: {
+    phpcsfixer: {
+      config: '.php-cs-fixer.php',
+    }
+  }
+  git_hook_variables: {
+    EXEC_GRUMPHP_COMMAND: "docker run --rm -t -v $PWD:/app -w /app symsonte_wip-behat-extension_php sh -c './vendor/bin/grumphp run -n'"
+  }

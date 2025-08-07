@@ -1,0 +1,50 @@
+{
+  "name": "symsonte/wip-behat-extension",
+  "version": "0.1.0",
+  "require": {
+    "php": ">=8.4",
+    "symsonte/wip-service-kit": "0.1.0",
+    "psr/container": "^2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~11",
+    "phpunit/php-code-coverage": "~11",
+    "phpro/grumphp": "^2.6",
+    "friendsofphp/php-cs-fixer": "^3.58",
+    "behat/behat": "^3.24"
+  },
+  "autoload": {
+    "psr-4": {
+      "Symsonte\\": [
+        "src/"
+      ]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Symsonte\\Tests\\": [
+        "tests/"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://satis"
+    }
+  ],
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true,
+      "phpro/grumphp": true
+    },
+    "secure-http": false
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "extra": {
+    "skeleton": {
+      "version": "1"
+    }
+  }
+}
